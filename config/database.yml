@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  username: dev
+  password: codeyourboat
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: singularity_dev
+
+test:
+  <<: *default
+  database: singularity_test
