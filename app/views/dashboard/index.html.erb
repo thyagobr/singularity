@@ -16,8 +16,11 @@
 <div class="row">
   <% if @current_task then %>
     <ul class="collection">
-      <li class="collection-item active"><%= @current_task.text %> (<%= time_ago_in_words(@current_task.created_at) %>)
-        <%= button_to "Parar", task_path(id: @current_task.id, task: { current: false }), { class: "btn" , method: "put" }%>
+      <li class="collection-item active">
+        <p>
+        <%= @current_task.text %>
+        </p>
+        <%= button_to "Parar", task_path(id: @current_task.id, task: { current: false }), { class: "btn white black-text" , method: "put" }%>
       </li>
     </ul>
   <% end %>
@@ -25,7 +28,16 @@
 <div class="row">
   <ul class="collection">
     <% @tasks.each do |task| %>
-      <li class="collection-item"><%= task.text %> (<%= time_ago_in_words(task.created_at) %>)
+      <li class="collection-item" style="margin: 10px auto;">
+        <h4><%= task.text %></h4>
+        <hr>
+        <p>
+        <%= task.activities.count %> atividades<br>
+        <%= activity_time_for_task(task.id) %><br>
+          <% if last_activity = task.activities.last %>
+            Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
+          <% end %>
+        </p>
         <%= button_to "Começar", task_activities_path(task), class: "btn" %>
       </li>
     <% end %>
