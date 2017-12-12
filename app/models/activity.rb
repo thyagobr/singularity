@@ -4,7 +4,7 @@ class Activity < ApplicationRecord
 
   before_create :set_started_at_time
 
-  scope :current, -> { Activity.find_by(task: Task.current, finished_at: nil) }
+  scope :yesterday, -> { where('started_at between ? and ?', Date.yesterday.midnight, Date.today.midnight - 1.minute) }
 
   private
 
