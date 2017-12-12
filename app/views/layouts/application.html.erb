@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Singularity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,10 +15,15 @@
           <div class="nav-wrapper">
             <a href="/" class="brand-logo">singularity</a>
           </div>
+          <% if current_user.present? then %>
+            <ul class="right">
+              <%= button_to "Sair", session_path, method: :delete, class: "btn" %>
+            </ul>
+          <% end %>
         </div>
       </nav>
 
-      <div class="container">
+      <div class="container main-container">
         <%= yield %>
       </div>
   </body>

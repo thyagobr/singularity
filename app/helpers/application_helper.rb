@@ -7,11 +7,11 @@ module ApplicationHelper
     minutes, seconds = elapsed_seconds.divmod(60)
     result << "#{seconds} segundos"
     if minutes > 0
-      result << "#{minutes} minutos"
       hours, minutes = minutes.divmod(60)
+      result << "#{minutes} minutos"
       if hours > 0
-        result << "#{days} hours"
         days, hours = hours.divmod(24)
+        result << "#{hours} horas"
         result << "#{days} dias" if days > 0
       end
     end

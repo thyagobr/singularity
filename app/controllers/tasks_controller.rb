@@ -1,12 +1,11 @@
 class TasksController < ApplicationController
   def create
-    @task = Task.new(task_params)
-    @task.save
+    @task = current_user.tasks.create(task_params)
     redirect_to '/'
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     Activity.current.update(finished_at: Time.current) if @task.current? && task_params[:current] == "false"
     @task.update(task_params)
     redirect_to '/'

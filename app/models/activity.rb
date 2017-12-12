@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
+  belongs_to :user
   belongs_to :task
 
   before_create :set_started_at_time
