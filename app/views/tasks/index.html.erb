@@ -5,13 +5,35 @@
         <%= f.label :text, "Criar nova tarefa" %>
         <%= f.text_field :text %>
       </div>
-      
+
       <div class="input-field col s2">
         <%= f.submit "+", class: "btn" %>
       </div>
     </div>
   <% end %>
 </div>
+
+<div class="row">
+  <div class="col s1">
+    filtar tarefas:
+  </div>
+  <div class="col s1">
+    <a href="/tasks"><span class="new badge purple" data-badge-caption="todas"></span></a>
+  </div>
+  <div class="col s1">
+    <a href="/tasks?yesterday=true"><span class="new badge teal" data-badge-caption="de ontem"></span></a>
+  </div>
+</div>
+
+<script>
+$(document).on('turbolinks:load', function() {
+  toggle_task_details_for = function(task_id) {
+    var selector = '#task_details_' + task_id;
+    var target_display = ($(selector).css('display') === "none" ? "block" : "none");
+    $(selector).css('display', target_display);
+  };
+});
+</script>
 
 <div class="row">
   <% if @current_task then %>
@@ -29,15 +51,19 @@
   <ul class="collection">
     <% @tasks.each do |task| %>
       <li class="collection-item" style="margin: 10px auto;">
-        <h4><%= task.text %></h4>
-        <hr>
-        <p>
-        <%= task.activities.count %> atividades<br>
-        <%= activity_time_for_task(task.id) %><br>
+        <div class="row">
+          <div class="col s8">
+            <span onclick="toggle_task_details_for(<%= task.id %>)" class="task_text"><%= task.text %></span>
+          </div>
+        </div>
+        <div class="task_details" id="task_details_<%= task.id %>">
+          <hr>
+          <%= task.activities.count %> atividades<br>
+          <%= activity_time_for_task(task.id) %><br>
           <% if last_activity = task.activities.last %>
             Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
-          <% end %>
-        </p>
+        <% end %>
+        </div>
         <%= button_to "Começar", task_activities_path(task), class: "btn" %>
       </li>
     <% end %>

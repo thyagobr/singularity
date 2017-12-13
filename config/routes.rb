@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'dashboard#index'
-
-  get 'dashboard/index', as: :dashboard
+  root to: 'tasks#index'
 
   get '/login', to: 'sessions#new'
   resource :session, only: [:new, :create, :destroy]

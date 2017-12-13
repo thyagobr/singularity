@@ -28,3 +28,15 @@ $link-color: color("light-blue", "darken-1") !default;
 .main-container {
   padding-top: 10px;
 }
+
+.yesterday {
+  visibility: hidden;
+}
+
+.task_details {
+  display: none;
+}
+
+.task_text {
+  font-size: 20px;
+}
