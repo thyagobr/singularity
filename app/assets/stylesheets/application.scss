@@ -40,3 +40,7 @@ $link-color: color("light-blue", "darken-1") !default;
 .task_text {
   font-size: 20px;
 }
+
+.borderless {
+  border: 0 !important;
+}
