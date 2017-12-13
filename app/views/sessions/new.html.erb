@@ -2,6 +2,11 @@
   <%= label_tag :email %>
   <%= email_field_tag :email, nil, placeholder: 'digite seu email' %>
 
+  <p>
+    <input type="checkbox" class="filled-in" id="filled-in-box" />
+    <label for="filled-in-box">Mostrar senha</label>
+  </p>
+
   <%= label_tag :password %>
   <%= password_field_tag :password, nil, placeholder: 'digite sua senha' %>
 
@@ -11,3 +16,15 @@
     <%= submit_tag 'entrar', class: "btn" %>
   </div>
 <% end %>
+
+    <script>
+$(document).on('turbolinks:load', function() {
+  $(document).on('click', '#filled-in-box', function(event) {
+    if (this.checked === true) {
+      $('#password').attr('type', 'text');
+    } else {
+      $('#password').attr('type', 'password');
+    }
+  })
+});
+    </script>

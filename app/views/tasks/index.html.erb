@@ -14,14 +14,11 @@
 </div>
 
 <div class="row">
-  <div class="col s1">
-    filtar tarefas:
-  </div>
-  <div class="col s1">
+  <div class="col m1 s3">
     <a href="/tasks"><span class="new badge purple" data-badge-caption="todas"></span></a>
   </div>
-  <div class="col s1">
-    <a href="/tasks?yesterday=true"><span class="new badge teal" data-badge-caption="de ontem"></span></a>
+  <div class="col m1 s3">
+    <a href="/tasks?yesterday=true"><span class="new badge teal" data-badge-caption="ontem"></span></a>
   </div>
 </div>
 
@@ -63,8 +60,8 @@ $(document).on('turbolinks:load', function() {
           <% if last_activity = task.activities.last %>
             Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
         <% end %>
-        </div>
         <%= button_to "Começar", task_activities_path(task), class: "btn" %>
+        </div>
       </li>
     <% end %>
   </ul>
