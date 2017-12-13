@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'sessions#new'
   resource :session, only: [:new, :create, :destroy]
+  resources :remarks
   resources :tasks do
-    resources :activities
+    resources :activities do
+    end
   end
 end

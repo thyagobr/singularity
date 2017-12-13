@@ -29,6 +29,13 @@ $(document).on('turbolinks:load', function() {
     var target_display = ($(selector).css('display') === "none" ? "block" : "none");
     $(selector).css('display', target_display);
   };
+
+  $(document).on('click', '#toggle_remark_box', function(event) {
+    var selector = '.remark';
+    var target_display = ($(selector).css('display') === "none" ? "block" : "none");
+    $(selector).css('display', target_display);
+    event.preventDefault();
+  })
 });
 </script>
 
@@ -61,6 +68,14 @@ $(document).on('turbolinks:load', function() {
             Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
         <% end %>
         <%= button_to "Começar", task_activities_path(task), class: "btn" %>
+        <p>
+          <button ="#" class="btn" id="toggle_remark_box">Fazer uma anotação</button>
+        </p>
+        <div class="remark">
+          <form>
+            <input type="text" name="text"></input>
+          </form>
+        </div>
         </div>
       </li>
     <% end %>

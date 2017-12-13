@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>References:</strong>
+  <%= @remark.references %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @remark.user %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @remark.text %>
+</p>
+
+<%= link_to 'Edit', edit_remark_path(@remark) %> |
+<%= link_to 'Back', remarks_path %>
