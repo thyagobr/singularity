@@ -6,7 +6,7 @@ class Task < ApplicationRecord
 
   validates :text, presence: true
 
-  STATUS = ['todo', 'current', 'done']
+  STATUS = ['frozen', 'todo', 'current', 'done', 'delivered']
 
   private
 
