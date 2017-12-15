@@ -237,6 +237,9 @@ GEM
       activesupport (>= 4.0.0)
     show_me_the_cookies (3.1.0)
       capybara (~> 2.0)
+    simple_form (3.5.0)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -316,6 +319,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   show_me_the_cookies
+  simple_form
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

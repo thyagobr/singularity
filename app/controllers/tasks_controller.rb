@@ -13,9 +13,13 @@ class TasksController < ApplicationController
     @tasks -= [@current_task] if @current_task
   end
 
+  def new
+    @task = current_user.tasks.build
+  end
+
   def create
     @task = current_user.tasks.create(task_params)
-    redirect_to '/'
+    redirect_to tasks_path
   end
 
   def update

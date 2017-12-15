@@ -15,9 +15,6 @@
     -webkit-transition: background 0.1s linear 0.1s, color 0.1s linear 0.1s;
     transition: background 0.1s linear 0.1s, color 0.1s linear 0.1s;
 
-    &:last-child {
-      border-bottom: 0;
-    }
     &:hover {
       background: #673ab7;
       color: white;
@@ -46,9 +43,6 @@
     -webkit-transition: background 0.1s linear 0.1s, color 0.1s linear 0.1s;
     transition: background 0.1s linear 0.1s, color 0.1s linear 0.1s;
 
-    &:last-child {
-      border-bottom: 0;
-    }
     &:hover {
       background: #000;
       color: white;

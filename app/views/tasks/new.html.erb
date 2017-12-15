@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col m4 sm12 offset-m3 center">
+    <%= simple_form_for @task do |f| %>
+      <div class="row">
+        <%= f.input :text %>
+      </div>
+      <div class="row">
+        <%= f.input :briefing, input_html: { class: 'materialize-textarea' } %>
+      </div>
+      <div class="row">
+        <%= f.button :submit, "Criar tarefa" %>
+      </div>
+    <% end %>
+  </div>
+</div>

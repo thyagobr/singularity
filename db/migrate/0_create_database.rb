@@ -13,6 +13,7 @@ class CreateDatabase < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true, index: true, null: false
 
       t.string :text, null: false
+      t.text :briefing, null: false, default: ''
 
       t.string :status, null: false, default: 'frozen'
 

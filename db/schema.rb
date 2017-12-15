@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "text", null: false
+    t.text "briefing", default: "", null: false
     t.string "status", default: "frozen", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

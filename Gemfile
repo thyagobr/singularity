@@ -17,6 +17,7 @@ gem 'puma', '~> 3.0'
 gem 'pundit'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails'
+gem 'simple_form'
 gem 'therubyracer'
 gem 'uglifier'
 
