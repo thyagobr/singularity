@@ -13,7 +13,8 @@ class CreateDatabase < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true, index: true, null: false
 
       t.string :text, null: false
-      t.boolean :current, default: false
+
+      t.string :status, null: false, default: 'frozen'
 
       t.timestamps
     end
@@ -24,6 +25,14 @@ class CreateDatabase < ActiveRecord::Migration[5.1]
 
       t.datetime :started_at, null: false
       t.datetime :finished_at
+
+      t.timestamps
+    end
+
+    create_table :remarks do |t|
+      t.references :activity, foreign_key: true
+      t.references :user, foreign_key: true
+      t.text :text, null: false
 
       t.timestamps
     end

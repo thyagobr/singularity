@@ -1,6 +1,6 @@
 module ApplicationHelper
   def activity_time_for_task(task_id)
-    elapsed_seconds = Activity.where(task_id: task_id).reduce(0) do |memo, activity|
+    elapsed_seconds = Activity.where(task_id: task_id).where.not(finished_at: nil).reduce(0) do |memo, activity|
       memo += activity.finished_at - activity.started_at
     end.to_i
     result = []

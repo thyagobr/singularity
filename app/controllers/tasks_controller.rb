@@ -20,7 +20,6 @@ class TasksController < ApplicationController
 
   def update
     @task = current_user.tasks.find(params[:id])
-    current_user.current_activity.update(finished_at: Time.current) if @task.current? && task_params[:current] == "false"
     @task.update(task_params)
     redirect_to '/'
   end
@@ -28,6 +27,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.fetch(:task, {}).permit(:text, :current)
+    params.fetch(:task, {}).permit(:text, :status)
   end
 end

@@ -1,8 +1,6 @@
 class DashboardController < ApplicationController
-  def index
-    @task = current_user.tasks.build
-    @yesterdays_tasks = current_user.activities.yesterday.ids
-    @current_task = current_user.activities.find_by(finished_at: nil)&.task
-    @tasks = current_user.tasks.includes(:activities).order('activities.created_at desc') - [@current_task].compact
+  def main
+    @current_task = current_user.tasks.find_by(status: "current")
+    @tasks_todo = current_user.tasks.where(status: "todo")
   end
 end

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="today col m3 s12">
+    <div class="stage-box-title center">
+      hoje
+    </div>
+    <hr>
+    <% @tasks_todo.each do |task| %>
+      <div onclick="toggle_task_details_for(<%= task.id %>)" class="today-item center">
+        <%= task.text %>
+        <div class="task_details" id="task_details_<%= task.id %>">
+          <hr>
+          <%= task.activities.count %> atividades<br>
+          <%= activity_time_for_task(task.id) %><br>
+        <%= button_to "Começar", task_activities_path(task), class: "btn" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="now col m6 s12">
+    <div class="stage-box-title center">
+      fazendo
+    </div>
+    <hr>
+    <% if @current_task then %>
+      <div class="row center">
+        <h1 class="current-task-title"><%= @current_task.text %></h1>
+        <div class="row">
+          <div class="col s2">
+            <%= button_to "Parar", task_path(id: @current_task.id, task: { status: 'todo' }), { class: "btn purple" , method: "put" }%>
+          </div>
+          <div class="col s2 offset-s7">
+            <%= button_to "Entregar", task_path(id: @current_task.id, task: { status: 'done' }), { class: "btn teal" , method: "put" }%>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <p>Nenhuma tarefa sendo feita agora.</p>
+    <% end %>
+  </div>
+  <div class="done col m3 s12">
+    <div class="stage-box-title center">
+      feito 
+    </div>
+    <hr>
+  </div>
+</div>
