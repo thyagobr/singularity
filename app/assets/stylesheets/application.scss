@@ -14,8 +14,24 @@ $error-color: color("red", "base") !default;
 $link-color: color("light-blue", "darken-1") !default;
 @import "materialize";
 
+@media screen and (max-width: 800px) {
+  .container {
+    width: 98%
+  }
+
+  .brand-logo {
+    left: 10px !important;
+    transform: none !important;
+  }
+}
+
 .main-container {
   padding-top: 10px;
+}
+
+.section-title {
+  font-size: 1.5em;
+  font-weight: 900;
 }
 
 .remark {
@@ -39,4 +55,13 @@ $link-color: color("light-blue", "darken-1") !default;
 
 .borderless {
   border: 0 !important;
+}
+
+.task-box {
+  min-height: 70px;
+  border: 1px solid indigo;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

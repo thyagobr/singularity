@@ -1,0 +1,17 @@
+<div class="row center">
+  <span class="section-title">Composing</span>
+</div>
+
+<div class="row center">
+  <% @tasks.each_slice(4) do |batch| %>
+    <div class="row center">
+      <% batch.each do |task| %>
+        <div class="col m3 s12">
+          <div class="task-box">
+            <span class="center"><%= task.text %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

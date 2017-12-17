@@ -1,12 +1,3 @@
-<div class="row">
-  <div class="col m1 s3">
-    <a href="/tasks"><span class="new badge purple" data-badge-caption="todas"></span></a>
-  </div>
-  <div class="col m1 s3">
-    <a href="/tasks?yesterday=true"><span class="new badge teal" data-badge-caption="ontem"></span></a>
-  </div>
-</div>
-
 <script>
 $(document).on('turbolinks:load', function() {
   toggle_task_details_for = function(task_id) {
@@ -24,6 +15,11 @@ $(document).on('turbolinks:load', function() {
 });
 </script>
 
+<div class="row center">
+  <div class="col m4 s12 offset-m3">
+    <%= link_to "Criar nova tarefa", new_task_path, class: "btn", style: "width: 100%" %>
+  </div>
+</div>
 <div class="row">
   <% if @current_task then %>
     <ul class="collection">
@@ -36,31 +32,33 @@ $(document).on('turbolinks:load', function() {
   <% end %>
 </div>
 <div class="row">
-  <ul class="collection borderless">
-    <% @tasks.each do |task| %>
-      <li class="collection-item" style="margin: 10px auto;">
-        <div class="row">
-          <div class="col s8">
-            <span onclick="toggle_task_details_for(<%= task.id %>)" class="task_text"><%= task.text %></span>
+  <div class="col m4 s12 offset-m3">
+    <ul class="collection borderless">
+      <% @tasks.each do |task| %>
+        <li class="collection-item">
+          <div class="row">
+            <div class="col s8">
+              <span onclick="toggle_task_details_for(<%= task.id %>)" class="task_text"><%= task.text %></span>
+            </div>
           </div>
-        </div>
-        <div class="task_details" id="task_details_<%= task.id %>">
-          <hr>
-          <%= task.activities.count %> atividades<br>
-          <%= activity_time_for_task(task.id) %><br>
-          <% if last_activity = task.activities.last %>
-            Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
-        <% end %>
-        <p>
+          <div class="task_details" id="task_details_<%= task.id %>">
+            <hr>
+            <%= task.activities.count %> atividades<br>
+            <%= activity_time_for_task(task.id) %><br>
+            <% if last_activity = task.activities.last %>
+              Última atividade finalizada em <%= last_activity.finished_at.strftime("%d/%m/%Y às %H:%M") %>
+          <% end %>
+          <p>
           <button ="#" class="btn" id="toggle_remark_box">Fazer uma anotação</button>
-        </p>
-        <div class="remark">
-          <form>
-            <input type="text" name="text"></input>
-          </form>
-        </div>
-        </div>
-      </li>
-    <% end %>
-  </ul>
+          </p>
+          <div class="remark">
+            <form>
+              <input type="text" name="text"></input>
+            </form>
+          </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

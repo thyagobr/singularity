@@ -14,17 +14,35 @@
     <nav>
       <div class="container">
         <div class="nav-wrapper">
-          <a href="/" class="brand-logo">singularity</a>
+          <div class="left">
+            <a href="/" class="brand-logo">singularity</a>
+          </div>
+          <% if current_user.present? then %>
+
+            <div class="right">
+              <ul>
+                <li>
+                  <a href="/#" class="dropdown-button" data-activates='nav-dropdown' data-beloworigin="true" data-constrainwidth="false" data-turbolinks="false">
+                    <i class="material-icons">system_update_alt</i>
+                  </a>
+                </li>
+                <li>
+                  <%= link_to session_path, method: :delete do %>
+                    <i class="material-icons">highlight_off</i>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
         </div>
-        <% if current_user.present? then %>
-          <ul class="right">
-            <%= link_to session_path, method: :delete do %>
-              <i class="material-icons">highlight_off</i>
-            <% end %>
-          </ul>
         <% end %>
       </div>
     </nav>
+
+    <ul id="nav-dropdown" class="dropdown-content" data-turbolinks="false">
+      <li><%= link_to "dashboard", dashboard_path %></li>
+      <li><%= link_to "tarefas", tasks_path %></li>
+      <li><%= link_to "organizar raid", raids_path %></li>
+    </ul>
 
     <div class="container main-container">
       <%= yield %>
