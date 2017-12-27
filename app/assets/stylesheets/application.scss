@@ -65,3 +65,8 @@ $link-color: color("light-blue", "darken-1") !default;
   align-items: center;
   justify-content: center;
 }
+
+.btn-text-with-icon {
+  float: left;
+  margin-right: 5px;
+}

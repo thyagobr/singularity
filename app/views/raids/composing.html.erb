@@ -7,11 +7,17 @@
     <div class="row center">
       <% batch.each do |task| %>
         <div class="col m3 s12">
-          <div class="task-box">
-            <span class="center"><%= task.text %></span>
+          <div id="task_<%= task.id %>"class="task-box">
+            <%= button_to raid_select_task_path, class: "btn", params: { task_id: task.id } do %>
+              <span class="center"><%= task.text %></span>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
+  <% end %>
+
+  <%= button_to raid_strategy_path, id: "raid-next-button", class: "btn" do %>
+    <div class="btn-text-with-icon">continuar</div><i class="material-icons">fast_forward</i>
   <% end %>
 </div>
